@@ -10,8 +10,16 @@ void listInit(LinkedList *list)
 
 void listAdd(LinkedList *list, Item *item)
 {
-  list->head = item;
-  list->tail = item;
+  if(list->len == 0)
+  {
+    list->head = item;
+    list->tail = item;
+  }
+  else
+  {
+    list->tail = item;
+  }
+
   list->len += 1;
   item->next = NULL;
 }

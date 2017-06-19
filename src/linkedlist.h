@@ -18,5 +18,5 @@ struct LinkedList
 };
 
 void listInit(LinkedList *list);
-void listAdd(LinkedList *list, Item *item);
+void listAdd(LinkedList *list, Item *itemBaba);
 #endif // _LINKEDLIST_H
