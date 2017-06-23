@@ -18,9 +18,12 @@ void listAdd(LinkedList *list, Item *item)
   else
   {
     list->tail = item;
+    item->next = NULL;
   }
-
   list->len += 1;
-  item->next = NULL;
 }
 
+void listRemove(LinkedList *list, Item *item)
+{
+  
+}
