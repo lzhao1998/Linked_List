@@ -36,6 +36,11 @@ void test_listInit_ensure_initialized_to_NULL_and_0(void)
     "Baba",22,67.32,1.75
   };
    
+   struct Student abu = 
+   {
+     "Abu",24,80.75,1.77
+   };
+   
   Item itemAli = 
   {
     (Item *)-1,     //next
@@ -46,6 +51,12 @@ void test_listInit_ensure_initialized_to_NULL_and_0(void)
   {
     (Item *)-1,     //next
     (void *)&baba   //baba punya data
+  };
+  
+  Item itemAbu =
+  {
+    (Item *)-1,     //next
+    (void *)&abu   //abu punya data
   };
   
 /**
@@ -91,21 +102,24 @@ void test_listInit_ensure_initialized_to_NULL_and_0(void)
  *Given an empty linked list. Add Ali(student). Expect the linked list contains Ali.
  **/
 
-void test_initialized_Ali_and_Baba(void)
+void test_initialized_Ali_and_Baba_and_Abu(void)
 {
   LinkedList list;
 
   printf("Address of Ali: %p\n", &itemAli);
   printf("Address of Baba: %p\n", &itemBaba);
+  printf("Address of Abu: %p\n", &itemAbu);
     
   listInit(&list);
   listAdd(&list, &itemAli);
   listAdd(&list, &itemBaba);
+  listAdd(&list, &itemAbu);
   
   TEST_ASSERT_EQUAL_PTR(&itemAli, list.head);
-  TEST_ASSERT_EQUAL_PTR(&itemBaba, list.tail);
-  TEST_ASSERT_EQUAL(2, list.len);
-  TEST_ASSERT_NULL(itemBaba.next);
+  TEST_ASSERT_EQUAL_PTR(&itemAbu, list.tail);
+  TEST_ASSERT_EQUAL(3, list.len);
+  TEST_ASSERT_NULL(itemAbu.next);
   TEST_ASSERT_EQUAL_PTR(&baba, itemBaba.data);
+  TEST_ASSERT_EQUAL_PTR(&abu, itemAbu.data);
 }
 
