@@ -19,4 +19,5 @@ struct LinkedList
 
 void listInit(LinkedList *list);
 void listAdd(LinkedList *list, Item *itemBaba);
+void listRemove(LinkedList *list, char* name);
 #endif // _LINKEDLIST_H
