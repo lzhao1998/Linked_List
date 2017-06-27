@@ -1,6 +1,8 @@
 #include "unity.h"
 #include "linkedlist.h"
 #include "student.h"
+#include <string.h>
+#include <stdio.h>
 
 void setUp(void)
 {
@@ -131,12 +133,60 @@ void test_removing_ali(void)
   listAdd(&list, &itemAli);
   listAdd(&list, &itemBaba);
   listAdd(&list, &itemAbu);
-  listRemove(&list,"Ali");
+  listRemoveAli(&list,"Ali");
   TEST_ASSERT_EQUAL_PTR(&itemBaba, list.head);
   TEST_ASSERT_EQUAL_PTR(&itemAbu, list.tail);
   TEST_ASSERT_EQUAL(2, list.len);
   TEST_ASSERT_NULL(itemAbu.next);
   TEST_ASSERT_EQUAL_PTR(&baba, itemBaba.data);
   TEST_ASSERT_EQUAL_PTR(&abu, itemAbu.data);
+}
+
+void test_removing_ali_ByName(void)
+{
+  LinkedList list;
+  listInit(&list);
+  listAdd(&list, &itemAli);
+  listAdd(&list, &itemBaba);
+  listAdd(&list, &itemAbu);
+  listRemoveByName(&list,"Ali");
+  TEST_ASSERT_EQUAL_PTR(&itemBaba, list.head);
+  TEST_ASSERT_EQUAL_PTR(&itemAbu, list.tail);
+  TEST_ASSERT_EQUAL(2, list.len);
+  TEST_ASSERT_NULL(itemAbu.next);
+  TEST_ASSERT_EQUAL_PTR(&baba, itemBaba.data);
+  TEST_ASSERT_EQUAL_PTR(&abu, itemAbu.data);
+}
+
+void test_removing_baba_ByName(void)
+{
+  LinkedList list;
+  listInit(&list);
+  listAdd(&list, &itemAli);
+  listAdd(&list, &itemBaba);
+  listAdd(&list, &itemAbu);
+  listRemoveByName(&list,"Baba");
+  TEST_ASSERT_EQUAL_PTR(&itemAli, list.head);
+  TEST_ASSERT_EQUAL_PTR(&itemAbu, list.tail);
+  TEST_ASSERT_EQUAL(2, list.len);
+  TEST_ASSERT_NULL(itemAbu.next);
+  TEST_ASSERT_EQUAL_PTR(&ali, itemAli.data);
+  TEST_ASSERT_EQUAL_PTR(&abu, itemAbu.data);
+}
+
+void test_removing_abu_ByName(void)
+{
+  LinkedList list;
+  listInit(&list);
+  listAdd(&list, &itemAli);
+  listAdd(&list, &itemBaba);
+  listAdd(&list, &itemAbu);
+  listRemoveByName(&list,"Abu");
+  TEST_ASSERT_EQUAL_PTR(&itemAli, list.head);
+  TEST_ASSERT_EQUAL_PTR(&itemBaba, list.tail);
+  TEST_ASSERT_EQUAL(2, list.len);
+  TEST_ASSERT_NULL(itemBaba.next);
+  TEST_ASSERT_EQUAL_PTR(&baba, itemBaba.data);
+  TEST_ASSERT_EQUAL_PTR(&ali, itemAli.data);
 }
 

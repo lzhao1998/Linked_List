@@ -19,5 +19,7 @@ struct LinkedList
 
 void listInit(LinkedList *list);
 void listAdd(LinkedList *list, Item *itemBaba);
-void listRemove(LinkedList *list, char* name);
+void listRemoveAli(LinkedList *list, char* name);
+void listRemoveByName(LinkedList *list, char* name);
+void listRemoveHead(LinkedList *list);
 #endif // _LINKEDLIST_H
